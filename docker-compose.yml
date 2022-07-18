@@ -9,8 +9,8 @@ services:
     environment:
       ENV_VARIABLE: ${ENV_VARIABLE}
       NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
-    volumes:
-      - ./src:/app/src
-      - ./public:/app/public
+    # volumes:
+    #   - ./src:/app/src
+    #   - ./public:/app/public
     ports:
       - 3000:3000

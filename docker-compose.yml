@@ -6,11 +6,12 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    environment:
-      ENV_VARIABLE: ${ENV_VARIABLE}
-      NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
-    # volumes:
-    #   - ./src:/app/src
-    #   - ./public:/app/public
+    # environment:
+    #   ENV_VARIABLE: ${ENV_VARIABLE}
+    #   NEXT_PUBLIC_ENV_VARIABLE: ${NEXT_PUBLIC_ENV_VARIABLE}
+    volumes:
+      #   - ./src:/app/src
+      #   - ./public:/app/public
+      - .:/workspace:cached
     ports:
       - 3000:3000

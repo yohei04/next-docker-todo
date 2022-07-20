@@ -1,36 +1,17 @@
 import { FC } from 'react';
 
-import { TodoItem } from '../';
+import { TodoEntity, TodoItem } from '../';
 
-export type TodoEntity = {
-  id: number;
-  title: string;
-  completed: boolean;
+type Props = {
+  todos: TodoEntity[];
+  deleteTodo: (id: number) => void;
 };
 
-const todos = [
-  {
-    id: 1,
-    title: 'Todo 1',
-    completed: false,
-  },
-  {
-    id: 2,
-    title: 'Todo 2',
-    completed: false,
-  },
-  {
-    id: 3,
-    title: 'Todo 3',
-    completed: false,
-  },
-];
-
-export const TodoList: FC = () => {
+export const TodoList: FC<Props> = ({ todos, deleteTodo }) => {
   return (
     <ul>
       {todos.map((todo) => (
-        <TodoItem key={todo.id} todo={todo} />
+        <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} />
       ))}
     </ul>
   );

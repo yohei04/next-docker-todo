@@ -1,0 +1,8 @@
+.name {
+  cursor: pointer;
+}
+
+.completed {
+  color: lightgrey;
+  text-decoration: line-through;
+}

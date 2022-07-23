@@ -1,6 +1,6 @@
 import { FC } from 'react';
 
-import { TodoEntity } from '../';
+import { TodoEntity } from '../../../../../__generated__';
 
 type Props = {
   todo: TodoEntity;
@@ -13,7 +13,7 @@ export const TodoItem: FC<Props> = ({ todo, deleteTodo }) => {
       <div>
         <p>
           {todo.id}
-          {todo.title}
+          {todo.name}
         </p>
         <button onClick={() => deleteTodo(todo.id)}>X</button>
       </div>

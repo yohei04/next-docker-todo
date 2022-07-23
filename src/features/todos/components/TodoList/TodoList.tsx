@@ -1,6 +1,7 @@
 import { FC } from 'react';
 
-import { TodoEntity, TodoItem } from '../';
+import { TodoItem } from '../';
+import { TodoEntity } from '../../../../../__generated__';
 
 type Props = {
   todos: TodoEntity[];

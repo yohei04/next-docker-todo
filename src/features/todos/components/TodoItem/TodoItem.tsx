@@ -4,10 +4,10 @@ import { TodoEntity } from '../../../../../__generated__';
 
 type Props = {
   todo: TodoEntity;
-  deleteTodo: (id: number) => void;
+  // deleteTodo: (id: number) => void;
 };
 
-export const TodoItem: FC<Props> = ({ todo, deleteTodo }) => {
+export const TodoItem: FC<Props> = ({ todo }) => {
   return (
     <li>
       <div>
@@ -15,7 +15,7 @@ export const TodoItem: FC<Props> = ({ todo, deleteTodo }) => {
           {todo.id}
           {todo.name}
         </p>
-        <button onClick={() => deleteTodo(todo.id)}>X</button>
+        <button>X</button>
       </div>
     </li>
   );

@@ -6,5 +6,7 @@ import { useTodos } from '../../api/getTodos';
 export const TodoListContainer: FC = () => {
   const { data } = useTodos();
 
-  return <TodoListPresentation initialTodos={data!} />;
+  // if (!data) return <h1>Loading...</h1>;
+
+  return <TodoListPresentation todos={data!} />;
 };

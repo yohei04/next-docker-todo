@@ -5,14 +5,14 @@ import { TodoEntity } from '../../../../../__generated__';
 
 type Props = {
   todos: TodoEntity[];
-  deleteTodo: (id: number) => void;
+  // deleteTodo: (id: number) => void;
 };
 
-export const TodoList: FC<Props> = ({ todos, deleteTodo }) => {
+export const TodoList: FC<Props> = ({ todos,  }) => {
   return (
     <ul>
       {todos.map((todo) => (
-        <TodoItem key={todo.id} todo={todo} deleteTodo={deleteTodo} />
+        <TodoItem key={todo.id} todo={todo}  />
       ))}
     </ul>
   );

@@ -6,7 +6,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate": "openapi --input https://nest-prisma-api-heroku.herokuapp.com/api-json --output ./__generated__"
   },
   "dependencies": {
     "next": "12.2.2",
@@ -19,6 +20,7 @@
     "@types/react-dom": "18.0.6",
     "eslint": "8.20.0",
     "eslint-config-next": "12.2.2",
+    "openapi-typescript-codegen": "^0.23.0",
     "typescript": "4.7.4"
   }
 }

@@ -7,7 +7,7 @@ import { BASE_URL } from '../../../constants/api/baseUrl';
 
 const getTodos = async (): Promise<TodoEntity[]> => {
   const res = await axios.get(`${BASE_URL}/todos`);
-  await new Promise((resolve) => setTimeout(resolve, 2000));
+  // await new Promise((resolve) => setTimeout(resolve, 2000));
   return res.data;
 };
 

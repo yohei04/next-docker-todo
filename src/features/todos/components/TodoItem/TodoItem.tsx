@@ -1,13 +1,15 @@
 import { FC } from 'react';
 
 import { TodoEntity } from '../../../../../__generated__';
+import { useDeleteTodo } from '../../api/deleteTodo';
 
 type Props = {
   todo: TodoEntity;
-  // deleteTodo: (id: number) => void;
 };
 
 export const TodoItem: FC<Props> = ({ todo }) => {
+  const { mutate } = useDeleteTodo(todo.id);
+
   return (
     <li>
       <div>
@@ -15,7 +17,7 @@ export const TodoItem: FC<Props> = ({ todo }) => {
           {todo.id}
           {todo.name}
         </p>
-        <button>X</button>
+        <button onClick={() => mutate()}>X</button>
       </div>
     </li>
   );

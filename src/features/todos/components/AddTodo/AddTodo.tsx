@@ -2,13 +2,8 @@ import { FC, useState } from 'react';
 
 import { useCreateTodo } from '../../api/createTodo';
 
-type Props = {
-  // addTodo: (value: string) => void;
-};
-
-export const AddTodo: FC<Props> = () => {
+export const AddTodo: FC = () => {
   const [value, setValue] = useState('');
-
   const { mutate } = useCreateTodo({ name: value, completed: false });
 
   return (

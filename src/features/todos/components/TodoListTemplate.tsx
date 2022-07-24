@@ -1,7 +1,8 @@
 import Link from 'next/link';
 import { FC, Suspense } from 'react';
 
-import { TodoListContainer } from './';
+import { useTodos } from '../api/getTodos';
+import { AddTodo, TodoList } from './';
 
 export const TodoListTemplate: FC = () => {
   return (
@@ -9,8 +10,9 @@ export const TodoListTemplate: FC = () => {
       <Link href="/">トップへ</Link>
       <section>
         <h2>TODOリスト</h2>
+        <AddTodo />
         <Suspense fallback={<h1>ローディング</h1>}>
-          <TodoListContainer />
+          <TodoList />
         </Suspense>
       </section>
     </>

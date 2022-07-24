@@ -1,16 +1,14 @@
 import { FC } from 'react';
 
 import { TodoItem } from '../';
-import { TodoEntity } from '../../../../../__generated__';
+import { useTodos } from '../../api/getTodos';
 
-type Props = {
-  todos: TodoEntity[];
-};
+export const TodoList: FC = () => {
+  const { data: todos } = useTodos();
 
-export const TodoList: FC<Props> = ({ todos }) => {
   return (
     <ul>
-      {todos.map((todo) => (
+      {todos?.map((todo) => (
         <TodoItem key={todo.id} todo={todo} />
       ))}
     </ul>

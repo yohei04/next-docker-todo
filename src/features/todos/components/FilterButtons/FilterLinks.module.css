@@ -2,3 +2,16 @@
   display: flex;
   gap: 1rem;
 }
+
+.root [role='tab'] {
+  width: 8rem;
+  text-align: center;
+  padding: 0.4rem 0;
+  border: 2px lightgray solid;
+}
+
+.root [aria-selected='true'] {
+  border: 2px black solid;
+  text-decoration: underline;
+  text-underline-offset: 0.2em;
+}

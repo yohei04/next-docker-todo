@@ -5,3 +5,4 @@ export * from './TodoItemEditing/TodoItemEditing';
 export * from './TodoItemView/TodoItemView';
 export * from './AddTodo/AddTodo';
 export * from './FilterButtons/FilterButtons';
+export * from './FilterButtons/useFilterTodos';

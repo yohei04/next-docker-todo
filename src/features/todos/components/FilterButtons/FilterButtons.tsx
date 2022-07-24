@@ -1,17 +1,16 @@
-import { Dispatch, FC, SetStateAction, useCallback } from 'react';
+import { FC } from 'react';
 
 type Props = {
-  setFilterName: Dispatch<SetStateAction<TFilterName>>;
+  handleFilterAll: () => void;
+  handleFilterActive: () => void;
+  handleFilterCompleted: () => void;
 };
 
-export const FilterButtons: FC<Props> = ({ setFilterName }) => {
-  const handleFilterAll = useCallback(() => setFilterName(FILTER_NAMES.ALL), [setFilterName]);
-  const handleFilterActive = useCallback(() => setFilterName(FILTER_NAMES.ACTIVE), [setFilterName]);
-  const handleFilterCompleted = useCallback(
-    () => setFilterName(FILTER_NAMES.COMPLETED),
-    [setFilterName]
-  );
-
+export const FilterButtons: FC<Props> = ({
+  handleFilterAll,
+  handleFilterActive,
+  handleFilterCompleted,
+}) => {
   return (
     <div>
       <button onClick={handleFilterAll}>All</button>
@@ -20,11 +19,3 @@ export const FilterButtons: FC<Props> = ({ setFilterName }) => {
     </div>
   );
 };
-
-export const FILTER_NAMES = {
-  ALL: 'all',
-  ACTIVE: 'active',
-  COMPLETED: 'completed',
-} as const;
-
-export type TFilterName = typeof FILTER_NAMES[keyof typeof FILTER_NAMES];

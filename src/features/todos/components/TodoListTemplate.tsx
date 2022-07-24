@@ -1,7 +1,6 @@
 import Link from 'next/link';
 import { FC, Suspense } from 'react';
 
-import { useTodos } from '../api/getTodos';
 import { AddTodo, TodoList } from './';
 
 export const TodoListTemplate: FC = () => {

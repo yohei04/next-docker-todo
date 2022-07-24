@@ -1,21 +1,15 @@
 import { FC } from 'react';
 
-import { FilterButtons, TodoItem, useFilterTodos } from '../';
-import { useTodos } from '../../api/getTodos';
+import { TodoItem, useFilterTodos } from '../';
 
 export const TodoList: FC = () => {
-  const { data: todos } = useTodos();
-
-  const { filteredTodos, ...handlers } = useFilterTodos(todos);
+  const { filteredTodos } = useFilterTodos();
 
   return (
-    <div>
-      <FilterButtons {...handlers} />
-      <ul>
-        {filteredTodos?.map((todo) => (
-          <TodoItem key={todo.id} todo={todo} />
-        ))}
-      </ul>
-    </div>
+    <ul>
+      {filteredTodos.map((todo) => (
+        <TodoItem key={todo.id} todo={todo} />
+      ))}
+    </ul>
   );
 };

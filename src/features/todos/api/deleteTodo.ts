@@ -1,11 +1,11 @@
-import axios from 'axios';
+
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
-import { BASE_URL } from '../../../constants/api/baseUrl';
+import { axiosConfig } from '../../../config/axiosConfig';
 
 const deleteTodo = (id: number) => {
-  return axios.delete(`${BASE_URL}/todos/${id}`);
+  return axiosConfig.delete(`/todos/${id}`);
 };
 
 export const useDeleteTodo = (id: number) => {

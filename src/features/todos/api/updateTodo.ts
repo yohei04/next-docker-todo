@@ -1,12 +1,10 @@
-import axios from 'axios';
-
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { TodoEntity, UpdateTodoDto } from '../../../../__generated__';
-import { BASE_URL } from '../../../constants/api/baseUrl';
+import { axiosConfig } from '../../../config/axiosConfig';
 
 const updateTodo = (id: number, data: UpdateTodoDto): Promise<TodoEntity> => {
-  return axios.patch(`${BASE_URL}/todos/${id}`, data);
+  return axiosConfig.patch(`/todos/${id}`, data);
 };
 
 export const useUpdateTodo = (id: number, data: UpdateTodoDto) => {

@@ -3,10 +3,10 @@ import axios from 'axios';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { CreateTodoDto, TodoEntity } from '../../../../__generated__';
-import { BASE_URL } from '../../../constants/api/baseUrl';
+import { axiosConfig } from '../../../config/axiosConfig';
 
 const createTodo = (data: CreateTodoDto): Promise<TodoEntity> => {
-  return axios.post(`${BASE_URL}/todos`, data);
+  return axiosConfig.post('/todos', data);
 };
 
 export const useCreateTodo = (data: CreateTodoDto) => {

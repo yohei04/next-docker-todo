@@ -1,24 +1,23 @@
-import { FC, useCallback, useState } from 'react';
+import { FC } from 'react';
 
 import { TodoItemEditing, TodoItemView } from '../';
 import { TodoEntity } from '../../../../../__generated__';
+import { useDisclosure } from '../../../../hooks/useDisclosure';
 
 type Props = {
   todo: TodoEntity;
 };
 
 export const TodoItem: FC<Props> = ({ todo }) => {
-  const [isEditing, setIsEditing] = useState(false);
-  const openEditing = useCallback(() => setIsEditing(true), []);
-  const closeEditing = useCallback(() => setIsEditing(false), []);
+  const { isOpen: isEditing, open, close } = useDisclosure();
 
   return (
     <li>
       <div>
         {isEditing ? (
-          <TodoItemEditing todo={todo} closeEditing={closeEditing} />
+          <TodoItemEditing todo={todo} closeEditing={close} />
         ) : (
-          <TodoItemView todo={todo} openEditing={openEditing} />
+          <TodoItemView todo={todo} openEditing={open} />
         )}
       </div>
     </li>

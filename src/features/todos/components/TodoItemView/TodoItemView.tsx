@@ -1,4 +1,5 @@
 import clsx from 'clsx';
+import Link from 'next/link';
 import { FC } from 'react';
 
 import { TodoEntity } from '../../../../../__generated__';
@@ -27,6 +28,7 @@ export const TodoItemView: FC<Props> = ({ todo, openEditing }) => {
         {todo.id}
         {todo.name}
       </p>
+      <Link href={`todo/${todo.id}`}>詳細へ</Link>
       <button onClick={openEditing}>編集</button>
       <button onClick={() => deleteTodoMutate()}>削除</button>
     </div>

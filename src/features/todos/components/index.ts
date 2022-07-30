@@ -6,3 +6,5 @@ export * from './TodoItemView/TodoItemView';
 export * from './AddTodo/AddTodo';
 export * from './FilterButtons/FilterLinks';
 export * from './TodoList/useFilterTodos';
+
+export * from './TodoDetailTemplate';

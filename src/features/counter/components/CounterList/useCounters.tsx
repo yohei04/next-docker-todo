@@ -16,14 +16,25 @@ export const useCounters = () => {
 
   const countNum = useMemo(() => counters.reduce((acc, cur) => acc + cur.value, 0), [counters]);
 
+  // strictモードでも正しく動く
   const increment = useCallback((index: number) => {
+    console.log('run once?');
     setCounters((prev) => {
-      const newCounters = [...prev];
-      newCounters[index].value += 1;
+      console.log('run twice?');
+      const newCounters = prev.map((counter, i) => {
+        if (i === index) {
+          return {
+            ...counter,
+            value: counter.value + 1,
+          };
+        }
+        return counter;
+      });
       return newCounters;
     });
   }, []);
 
+  // strictモードで壊れる（ミュータブルなため）
   const decrement = useCallback((index: number) => {
     setCounters((prev) => {
       const newCounters = [...prev];
@@ -31,8 +42,6 @@ export const useCounters = () => {
       return newCounters;
     });
   }, []);
-
-  console.log({ counters });
 
   return {
     counters,

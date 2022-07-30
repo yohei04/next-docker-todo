@@ -3,7 +3,7 @@ import { FC } from 'react';
 import { CounterItem, CounterItem2, useCounters } from '../';
 
 export const CounterList: FC = () => {
-  const { counters, countNum, increment, decrement } = useCounters();
+  const { counters, countNum, increment, decrement, incrementByTwo } = useCounters();
 
   return (
     <div>
@@ -15,6 +15,7 @@ export const CounterList: FC = () => {
           value={counter.value}
           increment={() => increment(index)}
           decrement={() => decrement(index)}
+          incrementByTwo={index === 0 ? () => incrementByTwo(index) : undefined}
         />
       ))}
 

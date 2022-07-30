@@ -43,10 +43,28 @@ export const useCounters = () => {
     });
   }, []);
 
+  const incrementByTwo = useCallback((index: number) => {
+    console.log('run once?');
+    setCounters((prev) => {
+      console.log('run twice?');
+      const newCounters = prev.map((counter, i) => {
+        if (i === index) {
+          return {
+            ...counter,
+            value: counter.value + 2,
+          };
+        }
+        return counter;
+      });
+      return newCounters;
+    });
+  }, []);
+
   return {
     counters,
     countNum,
     increment,
     decrement,
+    incrementByTwo,
   };
 };

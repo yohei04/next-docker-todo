@@ -11,8 +11,12 @@ export const TodoDetailTemplate: FC = () => {
         <h2>TODO詳細</h2>
         <TodoWrapper>チルドレン1</TodoWrapper>
         <TodoWrapper>
-          <h5>チルドレン2</h5>
-          <button>x2</button>
+          {({ incrementByTwo }) => (
+            <>
+              <h5>チルドレン2</h5>
+              <button onClick={incrementByTwo}>+2</button>
+            </>
+          )}
         </TodoWrapper>
         <TodoWrapper>
           <TodoDetail />

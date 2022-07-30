@@ -8,7 +8,7 @@ type Props = {
   children: ReactNode | ((renderProps: RenderProps) => ReactNode);
 };
 
-export const TodoWrapper: FC<Props> = ({ children }) => {
+export const CounterItem: FC<Props> = ({ children }) => {
   const [counter, setCounter] = useState(0);
   const increment = useCallback(() => setCounter((prev) => prev + 1), []);
   const incrementByTwo = useCallback(() => setCounter((prev) => prev + 2), []);

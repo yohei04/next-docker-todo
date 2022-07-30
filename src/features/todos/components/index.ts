@@ -8,5 +8,3 @@ export * from './FilterButtons/FilterLinks';
 export * from './TodoList/useFilterTodos';
 
 export * from './TodoDetailTemplate';
-export * from './TodoWrapper/TodoWrapper';
-export * from './TodoDetail/TodoDetail';

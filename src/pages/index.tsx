@@ -7,6 +7,8 @@ const Home: NextPage = () => {
   return (
     <div className={styles.container}>
       <Link href="/todo">TODOへ</Link>
+      <br />
+      <Link href="/counter">カウンターへ</Link>
     </div>
   );
 };

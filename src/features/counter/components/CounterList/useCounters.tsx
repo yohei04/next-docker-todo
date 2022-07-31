@@ -34,10 +34,12 @@ export const useCounters = () => {
     });
   }, []);
 
-  // strictモードで壊れる（ミュータブルなため）
   const decrement = useCallback((index: number) => {
     setCounters((prev) => {
-      const newCounters = [...prev];
+      // strictモードでも正しく動く
+      const newCounters = structuredClone(prev);
+      // strictモードで壊れる（shallow copyでミュータブルなため）
+      // const newCounters = [...prev];
       newCounters[index].value -= 1;
       return newCounters;
     });

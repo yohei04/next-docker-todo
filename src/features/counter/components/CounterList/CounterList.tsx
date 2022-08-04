@@ -7,7 +7,7 @@ export const CounterList: FC = () => {
 
   return (
     <div>
-      <h2>{countNum}</h2>
+      <h2>合計値: {countNum}</h2>
       {counters.map((counter, index) => (
         <CounterItem2
           key={counter.label}

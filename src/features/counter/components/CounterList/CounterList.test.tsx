@@ -12,5 +12,5 @@ test('+ボタンを1回押下すると合計値が1になること', async () =>
   const { user } = userEventSetup(<CounterList />);
   const addButtons = screen.getAllByRole('button', { name: '+' });
   await user.click(addButtons[0]);
-  expect(screen.getByText('合計値: 2')).toBeInTheDocument();
+  expect(screen.getByText('合計値: 1')).toBeInTheDocument();
 });

@@ -1,17 +1,19 @@
 import { useCallback, useMemo, useState } from 'react';
 
-type TCounter = {
+export type TCounter = {
   label: string;
   value: number;
 };
 
-const initialCounters = [
-  { label: 'カウンター1', value: 0 },
-  { label: 'カウンター2', value: 0 },
-  { label: 'カウンター3', value: 0 },
-];
+type TUseCounters = {
+  counters: TCounter[];
+  countNum: number;
+  increment: (index: number) => void;
+  decrement: (index: number) => void;
+  incrementByTwo: (index: number) => void;
+};
 
-export const useCounters = () => {
+export const useCounters = (initialCounters: TCounter[]): TUseCounters => {
   const [counters, setCounters] = useState<TCounter[]>(initialCounters);
 
   const countNum = useMemo(() => counters.reduce((acc, cur) => acc + cur.value, 0), [counters]);

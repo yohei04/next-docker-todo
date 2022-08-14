@@ -1,4 +1,4 @@
-import { FC, useCallback, useMemo, useState } from 'react';
+import { FC } from 'react';
 
 import { CounterItem, CounterItem2, TCounter, useCounters } from '../';
 
@@ -7,30 +7,12 @@ type Props = {
 };
 
 export const CounterList: FC<Props> = ({ initialCounters }) => {
-  const { value: firstValue, counterItem: firstCounterItem } = useCounters(initialCounters[0]);
-  const { value: secondValue, counterItem: secondCounterItem } = useCounters(initialCounters[1]);
-
-  const countNum = useMemo(() => firstValue + secondValue, [firstValue, secondValue]);
-
-  // const items = initialCounters.map((initialCounter) => useCounters(initialCounter));
-  // const countNum = useMemo(() => {
-  //   return items.reduce((acc, cur) => acc + cur.counter, 0);
-  // }, [items]);
+  const { counters, countSum, increment, decrement, incrementByTwo } = useCounters(initialCounters);
 
   return (
     <div>
-      <h2>合計値: {countNum}</h2>
-      {/* {counters.map((counter, index) => ( */}
-      {firstCounterItem}
-      {secondCounterItem}
-
-      {/* {items.map((item) => {
-        return <item.CounterItem key={item.label} />;
-      })} */}
-
-      {/* ))} */}
-
-      {/* {counters.map((counter, index) => (
+      <h2>合計値: {countSum}</h2>
+      {counters.map((counter, index) => (
         <CounterItem2
           key={counter.label}
           label={counter.label}
@@ -39,7 +21,7 @@ export const CounterList: FC<Props> = ({ initialCounters }) => {
           decrement={() => decrement(index)}
           incrementByTwo={index === 0 ? () => incrementByTwo(index) : undefined}
         />
-      ))} */}
+      ))}
 
       {/* <CounterItem>カウンター1</CounterItem>
       <CounterItem>

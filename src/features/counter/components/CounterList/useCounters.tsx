@@ -1,6 +1,7 @@
 import { FC, useCallback, useMemo, useState } from 'react';
 
 export type TCounter = {
+  id: number;
   label: string;
   value: number;
 };
@@ -11,6 +12,8 @@ type TUseCounters = {
   increment: (index: number) => void;
   decrement: (index: number) => void;
   incrementByTwo: (index: number) => void;
+  addCounter: () => void;
+  deleteCounter: (id: number) => void;
 };
 
 export const useCounters = (initialCounters: TCounter[]): TUseCounters => {
@@ -60,6 +63,17 @@ export const useCounters = (initialCounters: TCounter[]): TUseCounters => {
     });
   }, []);
 
+  const addCounter = useCallback(() => {
+    setCounters((prev) => [
+      ...prev,
+      { id: prev.length + 1, label: `カウンター${prev.length + 1}`, value: 0 },
+    ]);
+  }, []);
+
+  const deleteCounter = useCallback((id: number) => {
+    setCounters((prev) => prev.filter((counter) => counter.id !== id));
+  }, []);
+
   // const [value, setValue] = useState(initialValue);
   // const increment = useCallback(() => setValue((prev) => prev + 1), []);
   // const incrementByTwo = useCallback(() => setValue((prev) => prev + 2), []);
@@ -84,5 +98,7 @@ export const useCounters = (initialCounters: TCounter[]): TUseCounters => {
     increment,
     decrement,
     incrementByTwo,
+    addCounter,
+    deleteCounter,
   };
 };

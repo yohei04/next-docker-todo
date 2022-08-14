@@ -4,8 +4,8 @@ import { CounterList } from '../';
 import { userEventSetup } from '../../../../utils/test/userEventSetup';
 
 const dummyCounters = [
-  { label: 'カウンター1', value: 0 },
-  { label: 'カウンター2', value: 0 },
+  { id: 1, label: 'カウンター1', value: 0 },
+  { id: 2, label: 'カウンター2', value: 0 },
 ];
 
 test('はじめは合計値が0であること', async () => {

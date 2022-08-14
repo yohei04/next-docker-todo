@@ -4,9 +4,9 @@ import { FC } from 'react';
 import { CounterList } from './';
 
 const counters = [
-  { label: 'カウンター1', value: 0 },
-  { label: 'カウンター2', value: 0 },
-  { label: 'カウンター3', value: 0 },
+  {id: 1, label: 'カウンター1', value: 0 },
+  {id: 2, label: 'カウンター2', value: 0 },
+  {id: 3, label: 'カウンター3', value: 0 },
 ];
 
 export const CounterListTemplate: FC = () => {

@@ -7,19 +7,21 @@ type Props = {
 };
 
 export const CounterList: FC<Props> = ({ initialCounters }) => {
-  const { counters, countSum, increment, decrement, incrementByTwo } = useCounters(initialCounters);
+  const { counters, countSum, increment, decrement, incrementByTwo, addCounter, deleteCounter } =
+    useCounters(initialCounters);
 
   return (
     <div>
       <h2>合計値: {countSum}</h2>
+      <button onClick={addCounter}>カウンターを追加</button>
       {counters.map((counter, index) => (
         <CounterItem2
           key={counter.label}
-          label={counter.label}
-          value={counter.value}
+          counter={counter}
           increment={() => increment(index)}
           decrement={() => decrement(index)}
           incrementByTwo={index === 0 ? () => incrementByTwo(index) : undefined}
+          deleteCounter={deleteCounter}
         />
       ))}
 

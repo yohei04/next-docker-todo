@@ -35,3 +35,11 @@ test('カウンター追加ボタンを押すとカウンター自体が増え�
   const counters = screen.getAllByRole('listitem');
   expect(counters).toHaveLength(3);
 });
+
+test('カウンター削除ボタンを押すとカウンター自体が減ること', async () => {
+  const { user } = userEventSetup(<CounterList initialCounters={dummyCounters} />);
+  const deleteButtons = screen.getAllByRole('button', { name: '削除' });
+  await user.click(deleteButtons[0]);
+  const counters = screen.getAllByRole('listitem');
+  expect(counters).toHaveLength(1);
+});

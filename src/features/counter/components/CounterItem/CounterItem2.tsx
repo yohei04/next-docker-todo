@@ -18,7 +18,7 @@ export const CounterItem2: FC<Props> = ({
   deleteCounter,
 }) => {
   return (
-    <>
+    <div>
       <h3>共通タイトル</h3>
       <div>{counter.label}</div>
       <div>{counter.value}</div>
@@ -28,6 +28,6 @@ export const CounterItem2: FC<Props> = ({
         {incrementByTwo && <button onClick={incrementByTwo}>+2</button>}
       </div>
       <button onClick={() => deleteCounter(counter.id)}>削除</button>
-    </>
+    </div>
   );
 };

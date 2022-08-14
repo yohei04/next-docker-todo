@@ -66,7 +66,11 @@ export const useCounters = (initialCounters: TCounter[]): TUseCounters => {
   const addCounter = useCallback(() => {
     setCounters((prev) => [
       ...prev,
-      { id: prev.length + 1, label: `カウンター${prev.length + 1}`, value: 0 },
+      {
+        id: (prev.at(-1)?.id || 0) + 1,
+        label: `カウンター${(prev.at(-1)?.id || 0) + 1}`,
+        value: 0,
+      },
     ]);
   }, []);
 

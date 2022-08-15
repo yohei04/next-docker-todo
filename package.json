@@ -12,7 +12,8 @@
     "test:watch": "jest --watch",
     "generate": "openapi --input https://nest-prisma-api-heroku.herokuapp.com/api-json --output ./__generated__",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook",
+    "test-storybook": "test-storybook"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.0.10",

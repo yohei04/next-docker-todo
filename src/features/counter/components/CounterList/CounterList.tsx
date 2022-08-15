@@ -1,24 +1,32 @@
 import { FC } from 'react';
 
-import { CounterItem, CounterItem2, useCounters } from '../';
+import { CounterItem, CounterItem2, TCounter, useCounters } from '../';
 
-export const CounterList: FC = () => {
-  const { counters, countNum, increment, decrement, incrementByTwo } = useCounters();
+type Props = {
+  initialCounters: TCounter[];
+};
+
+export const CounterList: FC<Props> = ({ initialCounters }) => {
+  const { counters, countSum, increment, decrement, incrementByTwo, addCounter, deleteCounter } =
+    useCounters(initialCounters);
 
   return (
     <div>
-      <h2>合計値: {countNum}</h2>
-      <h2>本番に足してみる</h2>
-      {counters.map((counter, index) => (
-        <CounterItem2
-          key={counter.label}
-          label={counter.label}
-          value={counter.value}
-          increment={() => increment(index)}
-          decrement={() => decrement(index)}
-          incrementByTwo={index === 0 ? () => incrementByTwo(index) : undefined}
-        />
-      ))}
+      <h2>合計値: {countSum}</h2>
+      <button onClick={addCounter}>カウンターを追加</button>
+      <ul>
+        {counters.map((counter, index) => (
+          <li key={counter.label}>
+            <CounterItem2
+              counter={counter}
+              increment={() => increment(index)}
+              decrement={() => decrement(index)}
+              incrementByTwo={index === 0 ? () => incrementByTwo(index) : undefined}
+              deleteCounter={deleteCounter}
+            />
+          </li>
+        ))}
+      </ul>
 
       {/* <CounterItem>カウンター1</CounterItem>
       <CounterItem>

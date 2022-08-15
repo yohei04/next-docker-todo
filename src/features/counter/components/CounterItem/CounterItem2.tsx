@@ -18,13 +18,17 @@ export const CounterItem2: FC<Props> = ({
   deleteCounter,
 }) => {
   return (
-    <div>
+    <div id={`counter-${counter.id}`}>
       <h3>共通タイトル</h3>
       <div>{counter.label}</div>
-      <div>{counter.value}</div>
+      <div aria-label={`counter-value-${counter.id}`}>{counter.value}</div>
       <div>
-        <button onClick={increment}>+</button>
-        <button onClick={decrement}>-</button>
+        <button aria-label={`counter-increment-${counter.id}`} onClick={increment}>
+          +
+        </button>
+        <button aria-label={`counter-decrement-${counter.id}`} onClick={decrement}>
+          -
+        </button>
         {incrementByTwo && <button onClick={incrementByTwo}>+2</button>}
       </div>
       <button onClick={() => deleteCounter(counter.id)}>削除</button>

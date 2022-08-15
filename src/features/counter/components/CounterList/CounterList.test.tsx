@@ -8,6 +8,26 @@ const dummyCounters = [
   { id: 2, label: 'カウンター2', value: 0 },
 ];
 
+global.structuredClone = jest.fn((val) => {
+  return JSON.parse(JSON.stringify(val));
+});
+
+test('+ボタンを1回押下するとカウンター内の値が1になること', async () => {
+  const { user } = userEventSetup(<CounterList initialCounters={dummyCounters} />);
+  const incrementButton = screen.getByRole('button', { name: 'counter-increment-1' });
+  await user.click(incrementButton);
+  const counterItemValue = screen.getByLabelText('counter-value-1');
+  expect(counterItemValue).toHaveTextContent('1');
+});
+
+test('-ボタンを1回押下するとカウンター内の値が-1になること', async () => {
+  const { user } = userEventSetup(<CounterList initialCounters={dummyCounters} />);
+  const decrementButton = screen.getByRole('button', { name: 'counter-decrement-1' });
+  await user.click(decrementButton);
+  const counterItemValue = screen.getByLabelText('counter-value-1');
+  expect(counterItemValue).toHaveTextContent('-1');
+});
+
 test('はじめは合計値が0であること', async () => {
   render(<CounterList initialCounters={dummyCounters} />);
   expect(screen.getByText('合計値: 0')).toBeInTheDocument();
@@ -15,16 +35,17 @@ test('はじめは合計値が0であること', async () => {
 
 test('+ボタンを1回押下すると合計値が1になること', async () => {
   const { user } = userEventSetup(<CounterList initialCounters={dummyCounters} />);
-  const incrementButtons = screen.getAllByRole('button', { name: '+' });
-  await user.click(incrementButtons[0]);
+  const incrementButton = screen.getByRole('button', { name: 'counter-increment-1' });
+  await user.click(incrementButton);
   expect(screen.getByText('合計値: 1')).toBeInTheDocument();
 });
 
 test('2つのカウンターの+ボタンを1回ずつ押下すると合計値が2になること', async () => {
   const { user } = userEventSetup(<CounterList initialCounters={dummyCounters} />);
-  const incrementButtons = screen.getAllByRole('button', { name: '+' });
-  await user.click(incrementButtons[0]);
-  await user.click(incrementButtons[1]);
+  const firstIncrementButton = screen.getByRole('button', { name: 'counter-increment-1' });
+  const secondIncrementButton = screen.getByRole('button', { name: 'counter-increment-2' });
+  await user.click(firstIncrementButton);
+  await user.click(secondIncrementButton);
   expect(screen.getByText('合計値: 2')).toBeInTheDocument();
 });
 

@@ -13,7 +13,8 @@
     "generate": "openapi --input https://nest-prisma-api-heroku.herokuapp.com/api-json --output ./__generated__",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "test-storybook": "test-storybook"
+    "test-storybook": "test-storybook",
+    "chromatic": "chromatic --exit-zero-on-changes"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.0.10",
@@ -44,6 +45,7 @@
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
     "babel-loader": "^8.2.5",
+    "chromatic": "^6.7.4",
     "eslint": "8.20.0",
     "eslint-config-next": "12.2.2",
     "eslint-plugin-jsx-a11y": "^6.6.1",

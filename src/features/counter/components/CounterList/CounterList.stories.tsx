@@ -22,6 +22,6 @@ export const IncrementCounter: ComponentStoryObj<typeof CounterList> = {
     const incrementButton = canvas.getByRole('button', { name: 'counter-increment-1' });
     await userEvent.click(incrementButton);
     const counterItemValue = canvas.getByLabelText('counter-value-1');
-    expect(counterItemValue).toHaveTextContent('0');
+    expect(counterItemValue).toHaveTextContent('1');
   },
 };

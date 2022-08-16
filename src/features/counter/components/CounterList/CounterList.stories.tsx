@@ -11,7 +11,10 @@ export default {
 
 export const Default: ComponentStoryObj<typeof CounterList> = {
   args: {
-    initialCounters: [{ id: 1, label: 'カウンター1', value: 0 }],
+    initialCounters: [
+      { id: 1, label: 'カウンター1', value: 0 },
+      { id: 2, label: 'カウンター2', value: 0 },
+    ],
   },
 };
 

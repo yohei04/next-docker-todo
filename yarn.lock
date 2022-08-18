@@ -2764,18 +2764,18 @@
     read-pkg-up "^7.0.1"
     regenerator-runtime "^0.13.7"
 
-"@storybook/test-runner@^0.5.0":
-  version "0.5.0"
-  resolved "https://registry.yarnpkg.com/@storybook/test-runner/-/test-runner-0.5.0.tgz#cd766f3509537fe0f709607df706a6e5871e2fc4"
-  integrity sha512-It/lbQ5sBltyrYNozyN/TmI7fBaLupYQTrlvHikWdyVBOUDIWXKBeaR2M2GU2e+0BrqNY7u/JPJNP7diEBGO/Q==
+"@storybook/test-runner@^0.6.0-next.1":
+  version "0.6.0-next.1"
+  resolved "https://registry.yarnpkg.com/@storybook/test-runner/-/test-runner-0.6.0-next.1.tgz#09d217fdd16613a03625c43de608729560acd7f8"
+  integrity sha512-aQv72EI/9Qr+Uw9XIuRvXOq4OUP1QjDXYiJuQw4roSOaLA2s/f1bhSl0WfT3V/CTIyHHjJwEJ88JNZ/vnhShxg==
   dependencies:
     "@storybook/csf" "0.0.2--canary.4566f4d.1"
     can-bind-to-host "^1.1.1"
     commander "^9.0.0"
     global "^4.4.0"
-    jest-playwright-preset "^1.7.2"
+    jest-playwright-preset "^1.7.2 || ^2.0.0"
     jest-serializer-html "^7.1.0"
-    jest-watch-typeahead "^1.0.0"
+    jest-watch-typeahead "^2.0.0"
     node-fetch "^2"
     playwright "^1.14.0"
     semver "^7.3.7"
@@ -3809,12 +3809,19 @@ ansi-colors@^3.0.0:
   resolved "https://registry.yarnpkg.com/ansi-colors/-/ansi-colors-3.2.4.tgz#e3a3da4bfbae6c86a9c285625de124a234026fbf"
   integrity sha512-hHUXGagefjN2iRrID63xckIvotOXOojhQKWIPUZ4mNUZ9nLZW+7FMNoE1lOkEhNWYsx/7ysGIuJYCiMAA9FnrA==
 
-ansi-escapes@^4.2.1, ansi-escapes@^4.3.1:
+ansi-escapes@^4.2.1:
   version "4.3.2"
   resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-4.3.2.tgz#6b2291d1db7d98b6521d5f1efa42d0f3a9feb65e"
   integrity sha512-gKXj5ALrKWQLsYG9jlTRmR/xKluxHV+Z9QEwNIgCfM1/uwPMCuzVVnh5mwTd+OuBZcwSIMbqssNWRm1lE51QaQ==
   dependencies:
     type-fest "^0.21.3"
+
+ansi-escapes@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/ansi-escapes/-/ansi-escapes-5.0.0.tgz#b6a0caf0eef0c41af190e9a749e0c00ec04bb2a6"
+  integrity sha512-5GFMVX8HqE/TB+FuBJGuO5XG0WrsA6ptUqoODaT/n9mmUaZFkqnBueB4leqGBCmrUHnCnC4PCZTCd0E7QQ83bA==
+  dependencies:
+    type-fest "^1.0.2"
 
 ansi-html-community@0.0.8, ansi-html-community@^0.0.8:
   version "0.0.8"
@@ -8303,10 +8310,10 @@ jest-mock@^28.1.3:
     "@jest/types" "^28.1.3"
     "@types/node" "*"
 
-jest-playwright-preset@^1.7.2:
-  version "1.7.2"
-  resolved "https://registry.yarnpkg.com/jest-playwright-preset/-/jest-playwright-preset-1.7.2.tgz#708942c4dcc1edc85429079d2b47a9382298c454"
-  integrity sha512-0M7M3z342bdKQLnS70cIptlJsW+uuGptbPnqIMg4K5Vp/L/DhqdTKZK7WM4n6miAUnZdUcjXKOdQWfZW/aBo7w==
+"jest-playwright-preset@^1.7.2 || ^2.0.0":
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/jest-playwright-preset/-/jest-playwright-preset-2.0.0.tgz#624edcbdd31d5242a3420f9eda01781c4d657f70"
+  integrity sha512-pV5ruTJJMen3lwshUL4dlSqLlP8z4q9MXqWJkmy+sB6HYfzXoqBHzhl+5hslznhnSVTe4Dwu+reiiwcUJpYUbw==
   dependencies:
     expect-playwright "^0.8.0"
     jest-process-manager "^0.3.1"
@@ -8504,12 +8511,12 @@ jest-validate@^28.1.3:
     leven "^3.1.0"
     pretty-format "^28.1.3"
 
-jest-watch-typeahead@^1.0.0:
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/jest-watch-typeahead/-/jest-watch-typeahead-1.1.0.tgz#b4a6826dfb9c9420da2f7bc900de59dad11266a9"
-  integrity sha512-Va5nLSJTN7YFtC2jd+7wsoe1pNe5K4ShLux/E5iHEwlB9AxaxmggY7to9KUqKojhaJw3aXqt5WAb4jGPOolpEw==
+jest-watch-typeahead@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/jest-watch-typeahead/-/jest-watch-typeahead-2.0.0.tgz#1808eb9462a5887e3c65fdaacf3c537211609955"
+  integrity sha512-LX/jrTNkOIZV1n7fnEWlKJ73lhVPKF9B6F0L7pbje3xNPw1NddPLn0n8EFt7YwbCnC0+vlLylp7JehV6M06J6Q==
   dependencies:
-    ansi-escapes "^4.3.1"
+    ansi-escapes "^5.0.0"
     chalk "^4.0.0"
     jest-regex-util "^28.0.0"
     jest-watcher "^28.0.0"
@@ -12137,6 +12144,11 @@ type-fest@^0.8.0, type-fest@^0.8.1:
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-0.8.1.tgz#09e249ebde851d3b1e48d27c105444667f17b83d"
   integrity sha512-4dbzIzqvjtgiM5rw1k5rEHtBANKmdudhGyBEajN01fEyhaAIhsoKNy6y7+IN93IfpFtwY9iqi7kD+xwKhQsNJA==
+
+type-fest@^1.0.2:
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/type-fest/-/type-fest-1.4.0.tgz#e9fb813fe3bf1744ec359d55d1affefa76f14be1"
+  integrity sha512-yGSza74xk0UG8k+pLh5oeoYirvIiWo5t0/o3zHHAO2tRDiZcxWP7fywNlXhqb6/r6sWvwi+RsyQMWhVLe4BVuA==
 
 type-is@~1.6.18:
   version "1.6.18"

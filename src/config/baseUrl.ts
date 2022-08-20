@@ -1,1 +1,1 @@
-export const BASE_URL = 'https://nest-prisma-api-heroku.herokuapp.com';
+export const BASE_URL = process.env.NEXT_PUBLIC_API_BASE_URL || process.env.STORYBOOK_API_URL;

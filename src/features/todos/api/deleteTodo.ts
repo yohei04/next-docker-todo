@@ -1,4 +1,4 @@
-
+import toast from 'react-hot-toast';
 
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
@@ -11,9 +11,17 @@ const deleteTodo = (id: number) => {
 export const useDeleteTodo = (id: number) => {
   const queryClient = useQueryClient();
 
-  return useMutation(() => deleteTodo(id), {
-    onSuccess: () => {
-      queryClient.invalidateQueries(['todos']);
-    },
-  });
+  return useMutation(
+    () =>
+      toast.promise(deleteTodo(id), {
+        loading: 'Loading',
+        success: '削除しました',
+        error: '削除に失敗しました',
+      }),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(['todos']);
+      },
+    }
+  );
 };

@@ -42,9 +42,9 @@ export const Editing: ComponentStoryObj<typeof TodoItem> = {
 
 export const Update: ComponentStoryObj<typeof TodoItem> = {
   ...Default,
-  play: async ({ canvasElement }) => {
-    await Editing.play?.({ canvasElement });
-    const canvas = within(canvasElement);
+  play: async (context) => {
+    await Editing.play?.(context);
+    const canvas = within(context.canvasElement);
     const editInput = canvas.getByLabelText('edit-todo-input');
     await userEvent.type(editInput, '変更しました');
     expect(editInput).toHaveValue(`${Default.args?.todo?.name}変更しました`);

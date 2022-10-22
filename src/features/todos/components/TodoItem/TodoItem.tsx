@@ -25,7 +25,7 @@ export const TodoItem: FC<Props> = ({ todo }) => {
 
   const childFnc = () => {
     console.log(ref.current?.name);
-    ref.current?.fun();
+    // ref.current?.fun();
   };
 
   const nameFromChild = ref.current?.name;
@@ -40,7 +40,6 @@ export const TodoItem: FC<Props> = ({ todo }) => {
         )}
       </div>
       <button onClick={childFnc}>チャイルドファンク </button>
-      <h1>{nameFromChild}</h1>
     </li>
   );
 };

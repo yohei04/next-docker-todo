@@ -13,11 +13,13 @@ import { useUpdateTodo } from '../../api/updateTodo';
 type Props = {
   todo: TodoEntity;
   closeEditing: () => void;
-};useImperativeHandle;useImperativeHandle;
+};
+useImperativeHandle;
+useImperativeHandle;
 
 export type TodoItemEditingState = {
-  name: string;
-  fun: () => void;
+  [x: string]: string;
+  // fun: () => void;
 };
 
 export const TodoItemEditing = forwardRef<TodoItemEditingState, Props>(
@@ -43,11 +45,11 @@ export const TodoItemEditing = forwardRef<TodoItemEditingState, Props>(
       ref,
       () => {
         return {
-          name,
-          fun: () => console.log('コンソールとして出力'),
+          [`name-${todo.id}`]: name,
+          // fun: () => console.log('コンソールとして出力'),
         };
       },
-      [name]
+      [name, todo.id]
     );
 
     return (

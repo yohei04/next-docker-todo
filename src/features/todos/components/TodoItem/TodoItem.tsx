@@ -23,13 +23,6 @@ export const TodoItem: FC<Props> = ({ todo }) => {
   //   }
   // }, []);
 
-  const childFnc = () => {
-    console.log(ref.current?.name);
-    // ref.current?.fun();
-  };
-
-  const nameFromChild = ref.current?.name;
-
   return (
     <li>
       <div>
@@ -39,7 +32,6 @@ export const TodoItem: FC<Props> = ({ todo }) => {
           <TodoItemView todo={todo} openEditing={open} />
         )}
       </div>
-      <button onClick={childFnc}>チャイルドファンク </button>
     </li>
   );
 };

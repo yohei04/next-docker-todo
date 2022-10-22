@@ -18,8 +18,8 @@ useImperativeHandle;
 useImperativeHandle;
 
 export type TodoItemEditingState = {
-  [x: string]: string;
-  // fun: () => void;
+  childValue: string;
+  fun: () => void;
 };
 
 export const TodoItemEditing = forwardRef<TodoItemEditingState, Props>(
@@ -45,11 +45,11 @@ export const TodoItemEditing = forwardRef<TodoItemEditingState, Props>(
       ref,
       () => {
         return {
-          [`name-${todo.id}`]: name,
-          // fun: () => console.log('コンソールとして出力'),
+          childValue: name,
+          fun: () => console.log('コンソールとして出力'),
         };
       },
-      [name, todo.id]
+      []
     );
 
     return (

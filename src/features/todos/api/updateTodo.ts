@@ -1,3 +1,5 @@
+import toast from 'react-hot-toast';
+
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 
 import { TodoEntity, UpdateTodoDto } from '../../../../__generated__';
@@ -10,9 +12,17 @@ const updateTodo = (id: number, data: UpdateTodoDto): Promise<TodoEntity> => {
 export const useUpdateTodo = (id: number, data: UpdateTodoDto) => {
   const queryClient = useQueryClient();
 
-  return useMutation(() => updateTodo(id, data), {
-    onSuccess: () => {
-      queryClient.invalidateQueries(['todos']);
-    },
-  });
+  return useMutation(
+    () =>
+      toast.promise(updateTodo(id, data), {
+        loading: 'Loading',
+        success: '変更しました',
+        error: '変更に失敗しました',
+      }),
+    {
+      onSuccess: () => {
+        queryClient.invalidateQueries(['todos']);
+      },
+    }
+  );
 };

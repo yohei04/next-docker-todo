@@ -1,4 +1,11 @@
-import { ChangeEvent, FC, useCallback, useState } from 'react';
+import {
+  ChangeEvent,
+  FC,
+  forwardRef,
+  useCallback,
+  useImperativeHandle,
+  useState,
+} from 'react';
 
 import { TodoEntity } from '../../../../../__generated__';
 import { useUpdateTodo } from '../../api/updateTodo';
@@ -6,32 +13,58 @@ import { useUpdateTodo } from '../../api/updateTodo';
 type Props = {
   todo: TodoEntity;
   closeEditing: () => void;
+};useImperativeHandle;useImperativeHandle;
+
+export type TodoItemEditingState = {
+  name: string;
+  fun: () => void;
 };
 
-export const TodoItemEditing: FC<Props> = ({ todo, closeEditing }) => {
-  const [name, setName] = useState(todo.name);
+export const TodoItemEditing = forwardRef<TodoItemEditingState, Props>(
+  ({ todo, closeEditing }, ref) => {
+    const [name, setName] = useState(todo.name);
 
-  const { mutate: updateNameMutate } = useUpdateTodo(todo.id, {
-    ...todo,
-    name,
-  });
+    const { mutate: updateNameMutate } = useUpdateTodo(todo.id, {
+      ...todo,
+      name,
+    });
 
-  const handleChangeName = useCallback(
-    (e: ChangeEvent<HTMLInputElement>) => setName(e.target.value),
-    []
-  );
+    const handleChangeName = useCallback(
+      (e: ChangeEvent<HTMLInputElement>) => setName(e.target.value),
+      []
+    );
 
-  const handleSubmitName = useCallback(() => {
-    updateNameMutate();
-    closeEditing();
-  }, [updateNameMutate, closeEditing]);
+    const handleSubmitName = useCallback(() => {
+      updateNameMutate();
+      closeEditing();
+    }, [updateNameMutate, closeEditing]);
 
-  return (
-    <div>
-      <input type="text" value={name} aria-label="edit-todo-input" onChange={handleChangeName} />
-      <br />
-      <button onClick={handleSubmitName}>更新</button>
-      <button onClick={closeEditing}>キャンセル</button>
-    </div>
-  );
-};
+    useImperativeHandle(
+      ref,
+      () => {
+        return {
+          name,
+          fun: () => console.log('コンソールとして出力'),
+        };
+      },
+      [name]
+    );
+
+    return (
+      <div>
+        <input
+          // ref={ref}
+          type="text"
+          value={name}
+          aria-label="edit-todo-input"
+          onChange={handleChangeName}
+        />
+        <br />
+        <button onClick={handleSubmitName}>更新</button>
+        <button onClick={closeEditing}>キャンセル</button>
+      </div>
+    );
+  }
+);
+
+TodoItemEditing.displayName = 'TodoItemEditing';

@@ -10,7 +10,11 @@
     "lint": "next lint",
     "test": "jest",
     "test:watch": "jest --watch",
-    "generate": "openapi --input https://nest-prisma-api-heroku.herokuapp.com/api-json --output ./__generated__"
+    "generate": "openapi --input https://nest-prisma-api-heroku.herokuapp.com/api-json --output ./__generated__",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook",
+    "test-storybook": "test-storybook",
+    "chromatic": "chromatic --exit-zero-on-changes"
   },
   "dependencies": {
     "@tanstack/react-query": "^4.0.10",
@@ -19,9 +23,22 @@
     "clsx": "^1.2.1",
     "next": "12.2.2",
     "react": "18.2.0",
-    "react-dom": "18.2.0"
+    "react-dom": "18.2.0",
+    "react-hot-toast": "^2.3.0"
   },
   "devDependencies": {
+    "@babel/core": "^7.18.10",
+    "@storybook/addon-a11y": "^6.5.10",
+    "@storybook/addon-actions": "^6.5.10",
+    "@storybook/addon-essentials": "^6.5.10",
+    "@storybook/addon-interactions": "^6.5.10",
+    "@storybook/addon-links": "^6.5.10",
+    "@storybook/builder-webpack5": "^6.5.10",
+    "@storybook/jest": "^0.0.10",
+    "@storybook/manager-webpack5": "^6.5.10",
+    "@storybook/react": "^6.5.10",
+    "@storybook/test-runner": "^0.6.0-next.1",
+    "@storybook/testing-library": "^0.0.13",
     "@testing-library/dom": "^8.16.0",
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.3.0",
@@ -29,12 +46,21 @@
     "@types/node": "18.0.6",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
+    "babel-loader": "^8.2.5",
+    "chromatic": "^6.7.4",
     "eslint": "8.20.0",
     "eslint-config-next": "12.2.2",
     "eslint-plugin-jsx-a11y": "^6.6.1",
+    "eslint-plugin-storybook": "^0.6.4",
     "jest": "^28.1.3",
     "jest-environment-jsdom": "^28.1.3",
+    "msw": "^0.44.2",
+    "msw-storybook-addon": "^1.6.3",
     "openapi-typescript-codegen": "^0.23.0",
+    "storybook-addon-next-router": "^4.0.0",
     "typescript": "4.7.4"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

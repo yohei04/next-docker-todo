@@ -1,26 +1,29 @@
-import { useCallback, useMemo, useState } from 'react';
+import { FC, useCallback, useMemo, useState } from 'react';
 
-type TCounter = {
+export type TCounter = {
+  id: number;
   label: string;
   value: number;
 };
 
-const initialCounters = [
-  { label: 'カウンター1', value: 0 },
-  { label: 'カウンター2', value: 0 },
-  { label: 'カウンター3', value: 0 },
-];
+type TUseCounters = {
+  counters: TCounter[];
+  countSum: number;
+  increment: (index: number) => void;
+  decrement: (index: number) => void;
+  incrementByTwo: (index: number) => void;
+  addCounter: () => void;
+  deleteCounter: (id: number) => void;
+};
 
-export const useCounters = () => {
+export const useCounters = (initialCounters: TCounter[]): TUseCounters => {
   const [counters, setCounters] = useState<TCounter[]>(initialCounters);
 
-  const countNum = useMemo(() => counters.reduce((acc, cur) => acc + cur.value, 0), [counters]);
+  const countSum = useMemo(() => counters.reduce((acc, cur) => acc + cur.value, 0), [counters]);
 
   // strictモードでも正しく動く
   const increment = useCallback((index: number) => {
-    console.log('run once?');
     setCounters((prev) => {
-      console.log('run twice?');
       const newCounters = prev.map((counter, i) => {
         if (i === index) {
           return {
@@ -46,9 +49,7 @@ export const useCounters = () => {
   }, []);
 
   const incrementByTwo = useCallback((index: number) => {
-    console.log('run once?');
     setCounters((prev) => {
-      console.log('run twice?');
       const newCounters = prev.map((counter, i) => {
         if (i === index) {
           return {
@@ -62,11 +63,46 @@ export const useCounters = () => {
     });
   }, []);
 
+  const addCounter = useCallback(() => {
+    setCounters((prev) => [
+      ...prev,
+      {
+        id: (prev.at(-1)?.id || 0) + 1,
+        label: `カウンター${(prev.at(-1)?.id || 0) + 1}`,
+        value: 0,
+      },
+    ]);
+  }, []);
+
+  const deleteCounter = useCallback((id: number) => {
+    setCounters((prev) => prev.filter((counter) => counter.id !== id));
+  }, []);
+
+  // const [value, setValue] = useState(initialValue);
+  // const increment = useCallback(() => setValue((prev) => prev + 1), []);
+  // const incrementByTwo = useCallback(() => setValue((prev) => prev + 2), []);
+  // const decrement = useCallback(() => setValue((prev) => prev - 1), []);
+
+  // const counterItem = (
+  //   <>
+  //     <h3>共通タイトル</h3>
+  //     <div>{initialLabel}</div>
+  //     <div>{value}</div>
+  //     <div>
+  //       <button onClick={increment}>+</button>
+  //       <button onClick={decrement}>-</button>
+  //       {incrementByTwo && <button onClick={incrementByTwo}>+2</button>}
+  //     </div>
+  //   </>
+  // );
+
   return {
     counters,
-    countNum,
+    countSum,
     increment,
     decrement,
     incrementByTwo,
+    addCounter,
+    deleteCounter,
   };
 };

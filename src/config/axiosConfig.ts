@@ -1,5 +1,7 @@
 import axios from 'axios';
 
+import { BASE_URL } from './baseUrl';
+
 export const axiosConfig = axios.create({
-  baseURL: process.env.NEXT_PUBLIC_API_BASE_URL,
+  baseURL: BASE_URL,
 });

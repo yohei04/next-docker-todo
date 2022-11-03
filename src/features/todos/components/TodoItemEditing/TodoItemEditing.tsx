@@ -1,4 +1,11 @@
-import { ChangeEvent, FC, useCallback, useState } from 'react';
+import {
+  ChangeEvent,
+  FC,
+  forwardRef,
+  useCallback,
+  useImperativeHandle,
+  useState,
+} from 'react';
 
 import { TodoEntity } from '../../../../../__generated__';
 import { useUpdateTodo } from '../../api/updateTodo';
@@ -28,7 +35,7 @@ export const TodoItemEditing: FC<Props> = ({ todo, closeEditing }) => {
 
   return (
     <div>
-      <input type="text" value={name} onChange={handleChangeName} />
+      <input type="text" value={name} aria-label="edit-todo-input" onChange={handleChangeName} />
       <br />
       <button onClick={handleSubmitName}>更新</button>
       <button onClick={closeEditing}>キャンセル</button>
